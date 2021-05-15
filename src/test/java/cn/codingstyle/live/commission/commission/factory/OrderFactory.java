@@ -2,13 +2,16 @@ package cn.codingstyle.live.commission.commission.factory;
 
 import cn.codingstyle.live.commission.commission.model.Order;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class OrderFactory {
-    public static Order shipped(String createTime) {
+    public static Order shipped(String createTime, BigDecimal amount) {
         Order order = new Order();
         order.setStatus(Order.SHIPPED);
+        order.setAmount(amount);
+        //todo: duplicated for parse date
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             order.setCreateTime(dateFormat.parse(createTime));

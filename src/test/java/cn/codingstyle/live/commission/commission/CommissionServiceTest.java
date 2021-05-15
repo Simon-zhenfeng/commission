@@ -30,8 +30,8 @@ public class CommissionServiceTest {
     void 一个主播_所有订单在上播区间内_所有订单已收货() {
         // Given 一个主播_所有订单在上播区间内_所有订单已收货
         stubTimesheet("2021-04-11 23:00:00 | 2021-04-12 01:00:00 | LJQ");
-        Order order1 = OrderFactory.shipped("2021-04-11 20:10:00");
-        Order order2 = OrderFactory.shipped("2021-04-11 20:11:00");
+        Order order1 = OrderFactory.shipped("2021-04-11 23:10:00", BigDecimal.valueOf(500000));
+        Order order2 = OrderFactory.shipped("2021-04-11 23:11:00", BigDecimal.valueOf(500000));
         stubOrders(asList(order1, order2));
 
         // When
@@ -40,7 +40,7 @@ public class CommissionServiceTest {
         // Then
         assertThat(commissions).hasSize(1);
         assertThat(commissions.get(0).getFirst()).isEqualTo("LJQ");
-        assertThat(commissions.get(0).getSecond()).isEqualTo(new BigDecimal("1000000"));
+        assertThat(commissions.get(0).getSecond()).isEqualTo(new BigDecimal("1000000.00"));
     }
 
     private void stubOrders(List<Order> orders) {

@@ -1,12 +1,11 @@
 package cn.codingstyle.live.commission.commission.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Table(name = "store_order")
 public class Order {
     public static final String SHIPPED = "shipped";
 
@@ -15,6 +14,7 @@ public class Order {
     private Long id;
     private Date createTime;
     private String status;
+    private BigDecimal amount;
 
 
     public Long getId() {
@@ -39,5 +39,13 @@ public class Order {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }
