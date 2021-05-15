@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface TimeCardDao extends JpaRepository<TimeCard, Long> {
-    List<TimeCard> findAllByStartTimeBeforeAndEndTimeAfter(Date startTime, Date endTime);
+    List<TimeCard> findByStartTimeGreaterThanEqualAndEndTimeLessThanEqual(Date startTime, Date endTime);
 }

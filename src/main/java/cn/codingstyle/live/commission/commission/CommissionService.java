@@ -27,11 +27,9 @@ public class CommissionService {
 
     public List<Pair<String, BigDecimal>> getCommissions(String yearMonth) {
         Pair<Date, Date> range = getRange(yearMonth);
-        List<TimeCard> timesheet = timeCardDao.findAllByStartTimeBeforeAndEndTimeAfter(range.getFirst(), range.getSecond());
-        timesheet = timeCardDao.findAll();
+        List<TimeCard> timesheet = timeCardDao.findByStartTimeGreaterThanEqualAndEndTimeLessThanEqual(range.getFirst(), range.getSecond());
         TimeCard timeCard = timesheet.get(0);
         BigDecimal amount = orderDao.getSumAmountByCreateTimeBetween(timeCard.getStartTime(), timeCard.getEndTime());
-//        amount = BigDecimal.valueOf(1000000);
         BigDecimal commission = getCommission(amount);
         return asList(Pair.of(timeCard.getHostName(), commission));
     }

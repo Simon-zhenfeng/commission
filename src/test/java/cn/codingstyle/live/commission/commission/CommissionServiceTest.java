@@ -29,9 +29,9 @@ public class CommissionServiceTest {
     @Test
     void 一个主播_所有订单在上播区间内_所有订单已收货() {
         // Given 一个主播_所有订单在上播区间内_所有订单已收货
-        stubTimesheet("2021-04-11 23:00:00 | 2021-04-12 01:00:00 | LJQ");
-        Order order1 = OrderFactory.shipped("2021-04-11 23:10:00", BigDecimal.valueOf(500000));
-        Order order2 = OrderFactory.shipped("2021-04-11 23:11:00", BigDecimal.valueOf(500000));
+        stubTimesheet("2021-04-01 00:00:00 | 2021-04-02 01:00:00 | LJQ");
+        Order order1 = OrderFactory.shipped("2021-04-01 23:10:00", BigDecimal.valueOf(500000));
+        Order order2 = OrderFactory.shipped("2021-04-01 23:11:00", BigDecimal.valueOf(500000));
         stubOrders(asList(order1, order2));
 
         // When
