@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 error code: 1020
+.DS_Store
